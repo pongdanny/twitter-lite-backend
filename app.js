@@ -31,10 +31,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-<<<<<<< HEAD
-//app.listen(8080, () => console.log("Listening on 8080..."));
-=======
 // app.listen(8080, () => console.log("Listening on 8080..."));
->>>>>>> 1c32d8d7ecb9ceabd1747334325478ea04bd2fa9
+
 
 module.exports = app;
