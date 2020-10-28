@@ -2,12 +2,14 @@ const express = require("express");
 const morgan = require("morgan");
 const { environment } = require('./config');
 const app = express();
+const indexRouter = require("./routes/index");
+const tweetsRouter = require("./routes/tweets");
 
 app.use(morgan("dev"));
+app.use(express.json());
+app.use("/tweets", tweetsRouter);
+app.use("/", indexRouter);
 
-app.get("/", (req, res) => {
-  res.send("Welcome to the express-sequelize-starter!");
-});
 
 // Catch unhandled requests and forward to error handler.
 app.use((req, res, next) => {
@@ -28,5 +30,7 @@ app.use((err, req, res, next) => {
     stack: isProduction ? null : err.stack,
   });
 });
+
+app.listen(8080, () => console.log("Listening on 8080..."));
 
 module.exports = app;
