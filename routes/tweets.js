@@ -61,6 +61,20 @@ router.put(
   })
 );
 
+router.delete(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const tweetId = Number.parseInt(req.params.id, 10);
+    const tweet = await Tweet.findByPk(tweetId);
+    if (tweet) {
+      await tweet.destroy();
+      res.status(204).end();
+    } else {
+      next(tweetNotFoundError(tweetId));
+    }
+  })
+);
+
 function handleValidationErrors(req, res, next) {
   const validationErrors = validationResult(req);
   if (!validationErrors.isEmpty()) {
