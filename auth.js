@@ -4,7 +4,7 @@ const { jwtConfig } = require("./config");
 const { secret, expiresIn } = jwtConfig;
 
 const getUserToken = (user) => {
-  const uerDataForToken = {
+  const userDataForToken = {
     id: user.id,
     email: user.email,
   };

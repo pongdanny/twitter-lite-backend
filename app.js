@@ -10,7 +10,7 @@ const cors = require("cors");
 app.use(cors({ origin: "http://localhost:4000" }));
 app.use(morgan("dev"));
 app.use(express.json());
-app.user("/users", userRouter);
+app.use("/users", userRouter);
 app.use("/tweets", tweetsRouter);
 app.use("/", indexRouter);
 
