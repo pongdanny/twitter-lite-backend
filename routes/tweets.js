@@ -3,8 +3,10 @@ const router = express.Router();
 const db = require("../db/models");
 const { Tweet } = db;
 const {handleValidationErrors, asyncHandler, check} = require("./utils");
+const {requireAuth} = require("../auth");
 
 
+router.use(requireAuth);
 router.get(
   "/",
   asyncHandler(async (req, res, next) => {

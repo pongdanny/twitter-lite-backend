@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require("../db/models/index");
 const { User } = db;
 const { handleValidationErrors, asyncHandler, check } = require("./utils");
-const getUserToken = require("../auth");
+const {getUserToken} = require("../auth");
 
 const validateUsername = check("username")
   .exists({ checkFalsy: true })
