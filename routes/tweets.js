@@ -41,7 +41,7 @@ router.post(
   validator,
   handleValidationErrors,
   asyncHandler(async (req, res) => {
-    const tweet = Tweet.build({ ...req.body, userId: req.user.id });
+    const tweet = Tweet.build({ message:req.body.message, userId: req.user.id });
     await tweet.save();
     res.json(tweet);
   })
